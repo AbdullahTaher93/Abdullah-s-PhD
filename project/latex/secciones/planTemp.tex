@@ -1,2 +1,27 @@
 \section{Plan Temporal}
-el plan
+
+\definecolor{naranjaCabecera}{RGB}{244, 177, 131}
+\definecolor{azulFila}{RGB}{189, 215, 238}
+\definecolor{azulTexto}{RGB}{31, 78, 121}
+
+% Comando interno para alinear a la izquierda dentro de las celdas X sin romper el salto de línea
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\noindent
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash\bfseries\color{azulTexto}}m{3.5cm}|L|L|L|}
+    \hline
+    \rowcolor{naranjaCabecera}
+    \rule{0pt}{15pt} & \textbf{\color{azulTexto}Año 1} & \textbf{\color{azulTexto}Año 2} & \textbf{\color{azulTexto}Año 3} \\ \hline \hline
+    
+    \cellcolor{azulFila} Publicación científica & Una revisión amplia de los desafíos energéticos en la computación en la nube & Modelo predictivo para la gestión de recursos de Big Data & Un algoritmo inteligente para optimizar la eficiencia energética sostenible \\ \hline \hline
+    
+    \cellcolor{azulFila} Marco teórico & Revisión sistemática y estado del arte & Revisión bibliográfica & Profundización teórica \\ \hline \hline
+    
+    \cellcolor{azulFila} Mejora de calidad y colaboración & Estudio de los estándares de seguridad de datos en el entorno de la nube & Aplicación de estándares de aseguramiento de la calidad y pruebas de estabilidad del sistema & Validación final de los estándares de sostenibilidad de los recursos \\ \hline \hline
+    
+    \cellcolor{azulFila} Evaluación & Evaluación inicial & Evaluación intermedia & Validación final e hipótesis \\ \hline \hline
+    
+    \cellcolor{azulFila} Transferencia de resultados & Compartición de resultados preliminares en conferencias especializadas & Desarrollo de prototipos experimentales y su presentación & Guías, plantillas y difusión \\ \hline \hline
+    
+    \cellcolor{azulFila} Redacción y defensa de tesis & Elaboración de la propuesta de investigación & Redacción de los capítulos metodológicos y experimentales & Memoria final y defensa \\ \hline
+\end{tabularx}
