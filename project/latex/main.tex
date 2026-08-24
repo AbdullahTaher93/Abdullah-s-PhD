@@ -6,11 +6,15 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{tabularx} % Añadido para que funcione la tabla estructurada
 \usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{enumitem}
 
 % AJUSTE CRÍTICO: Se aumenta el margen superior (top) y el espacio del header
 \usepackage[margin=2.5cm, top=6cm, headheight=150pt, headsep=1cm]{geometry}
 
 \usepackage{fancyhdr}
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex}
+\addbibresource{referencias/ref.bib}
 \graphicspath{ {./logos/} }
 
 % ==========================================
@@ -19,6 +23,10 @@
 \definecolor{azulTitulo}{RGB}{20, 70, 140}
 \definecolor{grisCabecera}{RGB}{230, 230, 230}
 \definecolor{azulCelda}{RGB}{190, 215, 240}
+
+% hyperref debe cargarse después de los colores
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=azulTitulo, citecolor=azulTitulo, urlcolor=azulTitulo}
 
 % Configuración del Header corregida
 \pagestyle{fancy}
@@ -80,12 +88,11 @@ IA para la Gestión Sostenible de Big Data en la Nube: Predicción de Patrones i
 % Importación de tus archivos
 % ==========================================
 \include{secciones/antecedentes}
-\include{secciones/hipoYjustifi}
-\include{secciones/objetivos}
-\include{secciones/meto}
-\include{secciones/planTemp}
-\include{secciones/mediosYfinan}
-\include{secciones/refer}
-% ... resto de secciones
+%\include{secciones/hipoYjustifi}
+%\include{secciones/objetivos}
+%\include{secciones/meto}
+%\include{secciones/planTemp}
+%\include{secciones/mediosYfinan}
+%\include{secciones/refer}
 
 \end{document}
