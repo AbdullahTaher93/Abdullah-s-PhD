@@ -1,0 +1,98 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx} % Añadido para que funcione la tabla estructurada
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{enumitem}
+
+% AJUSTE CRÍTICO: Se aumenta el margen superior (top) y el espacio del header
+\usepackage[margin=2.5cm, top=6cm, headheight=150pt, headsep=1cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex}
+\addbibresource{referencias/ref.bib}
+\graphicspath{ {./logos/} }
+
+% ==========================================
+% CONFIGURACIÓN DE COLORES PERSONALIZADOS
+% ==========================================
+\definecolor{azulTitulo}{RGB}{20, 70, 140}
+\definecolor{grisCabecera}{RGB}{230, 230, 230}
+\definecolor{azulCelda}{RGB}{190, 215, 240}
+
+% hyperref debe cargarse después de los colores
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=azulTitulo, citecolor=azulTitulo, urlcolor=azulTitulo}
+
+% Configuración del Header corregida
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{%
+    \includegraphics[width=4.5cm]{ugr_logo.png}
+}
+\fancyhead[R]{%
+    \includegraphics[width=3.5cm]{eip_logo.png}
+}
+
+% Línea decorativa bajo los logos
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+% Título original con fondo
+\begin{center}
+    \colorbox{blue!5}{
+        \makebox[0.95\textwidth][c]{\Large \textbf{PLAN DE INVESTIGACIÓN}}
+    }
+\end{center}
+
+\vspace{1cm}
+
+% ==========================================
+% NUEVA SECCIÓN: DATOS DEL PLAN DE INVESTIGACIÓN (IMAGEN)
+% ==========================================
+\noindent
+\begin{tabularx}{\textwidth}{|X|}
+    \hline
+    \rowcolor{grisCabecera} \textbf{\large Primer Plan de Investigación presentado} \\
+    \hline
+\end{tabularx}
+
+\vspace{0.3cm}
+
+\begin{center}
+    \color{azulTitulo}\textbf{Título del Plan de Investigación}
+\end{center}
+\noindent
+IA para la Gestión Sostenible de Big Data en la Nube: Predicción de Patrones i Eficiencia Energética
+
+\vspace{0.4cm}
+
+\noindent
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \rowcolor{azulCelda} Línea de investigación del programa en la que se inscribe & Soft Computing \\
+    \hline
+    \rowcolor{azulCelda} Palabras clave (4) & Inteligencia Artificial, Computación en la Nube Sostenible, Gestión de Big Data, Eficiencia Energética \\
+    \hline
+\end{tabularx}
+
+\vspace{1.5cm} % Espacio de separación antes de los antecedentes
+
+% ==========================================
+% Importación de tus archivos
+% ==========================================
+\include{secciones/antecedentes}
+%\include{secciones/hipoYjustifi}
+%\include{secciones/objetivos}
+%\include{secciones/meto}
+%\include{secciones/planTemp}
+%\include{secciones/mediosYfinan}
+%\include{secciones/refer}
+
+\end{document}
