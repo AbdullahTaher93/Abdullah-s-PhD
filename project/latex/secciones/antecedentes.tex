@@ -4,16 +4,16 @@ El enorme aumento del volumen de datos digitales producidos por organizaciones p
 imponiendo  un consumo energético continuo e insostenible en los centros de datos para poder procesar dichos datos sin afectar negativamente la seguridad ni el tiempo de respuesta \parencite{gantz2012digital}.
 
 Este problema se ha trasladado y complicado desde los sistemas tradicionales locales (On-Premises) hacia entornos de computación en la nube e híbridos (Cloud e Hybrid Cloud, tales como instancias de cómputo y contenedores en Amazon Web Services - AWS EC2/ECS).
-En estas infraestructuras, el desafío central no es únicamente en el almacenamiento estático, sino en el coste financiero y energético derivado de mantener capacidad de cómputo activa para procesar datos en tiempo real.
+En estas infraestructuras, el desafío central no está únicamente en el almacenamiento estático, sino en el coste financiero y energético derivado de mantener capacidad de cómputo activa para procesar datos en tiempo real.
 
-En este contexto, las infraestructuras enfrentan una problemática crítica enfocada en la ineficiencia de costes y el sobreconsumo energético
-como respuesta reactiva a esta incertidumbre sobre el crecimiento futuro de los datos y para evitar retardos en la provisión de instancias(provisioning delay), la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura de almacenamiento como estrategia de reacción para abordar esta incertidumbre sobre el crecimiento futuro de los datos \parencite{cortez2017resource, irlbeck2014green}.
+En este contexto, las infraestructuras enfrentan una problemática crítica enfocada en la ineficiencia de costes y el sobreconsumo energético.
+Como respuesta reactiva a esta incertidumbre sobre el crecimiento futuro de los datos y para evitar retardos en la provisión de instancias(provisioning delay), la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura de almacenamiento como estrategia de reacción para abordar esta incertidumbre sobre el crecimiento futuro de los datos \parencite{cortez2017resource, irlbeck2014green}.
 Y por eso, entre el 30\% y el 50\% de la capacidad de almacenamiento instalada constantemente permanece inactiva \parencite{cortez2017resource}.
 Esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía \parencite{masanet2020recalibrating}.
 
 Este problema ha sido formulado formalmente en la literatura dentro de dos paradigmas complementarios.
 La \textit{Hierarchical Storage Management} (\textbf{HSM}) y el \textit{Automated Storage Tiering} (\textbf{AST}).
-El Modelo de Gestión Jerárquica (HSM) sugiere organizar los datos en capas jerárquicos de almacenamiento conocidos como caliente (\textit{hot}), templado (\textit{warm}) y frío (\textit{cold}) según de su frecuencia de uso \parencite{mesnier2003object}.
+El Modelo de capas jerárquicos (HSM) sugiere organizar los datos en capas jerárquicos de almacenamiento conocidos como caliente (\textit{hot}), templado (\textit{warm}) y frío (\textit{cold}) según de su frecuencia de uso \parencite{mesnier2003object}.
 El AST amplía el modelo al integrar mecanismos automáticos que mueven los datos entre capas de manera dinámica, en los patrones de acceso según en la función de cambios \parencite{guerra2011tiering}.
 
 \subsection*{Brecha investigadora}
