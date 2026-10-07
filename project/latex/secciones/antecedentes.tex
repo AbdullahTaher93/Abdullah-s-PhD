@@ -6,6 +6,10 @@ Utiliza la capa templada (\textit{warm}) discos HDD o servicios de acceso infrec
 Y la capa fría (\textit{cold}) recurre a medios de bajo coste y acceso lento, como cintas magnéticas o servicios de archivo en la nube como Amazon S3 Glacier.
 Las políticas que determinan la transferencia de datos entre este tipo de capas que son configuradas manualmente por los administradores del sistema que resultan incapaces a los cambios en los patrones de acceso reales \parencite{smith2018hsm}.
 
+Para tomar nuevas decisiones sobre cómo gestionar el almacenamiento debe respetar los Acuerdos de Nivel de Servicio (\textit{Service Level Agreements}, \textbf{SLA}) que son compromisos cuantitativos de latencia, tiempo de respuesta y disponibilidad que las aplicaciones exigen a la infraestructura \parencite{verma2015sla}.
+Esto significa que no es posible mover datos a capas más lentas o económicas de forma indiscriminada.
+Para la migración debe garantizar que los datos a los que las aplicaciones acceden con frecuencia permanezcan en capas con la latencia adecuada para no romper dichos compromisos.
+
 El enorme aumento del volumen de datos digitales producidos por organizaciones públicas y privadas ha sido uno de los desafíos tecnológicos más relevantes de la última década, porque supera los límites de la capacidad computacional y de almacenamiento de los sistemas tradicionales,
 imponiendo  un consumo energético continuo e insostenible en los centros de datos para poder procesar dichos datos sin afectar negativamente la seguridad ni el tiempo de respuesta \parencite{gantz2012digital}.
 
