@@ -25,10 +25,16 @@ imponiendo  un consumo energético continuo e insostenible en los centros de dat
 Este problema se ha trasladado y complicado desde los sistemas tradicionales locales (On-Premises) hacia entornos de computación en la nube e híbridos (Cloud e Hybrid Cloud, tales como instancias de cómputo y contenedores en Amazon Web Services - AWS EC2/ECS).
 En estas infraestructuras, el desafío central no está únicamente en el almacenamiento estático, sino en el coste financiero y energético derivado de mantener capacidad de cómputo activa para procesar datos en tiempo real.
 
-En este contexto, las infraestructuras enfrentan una problemática crítica enfocada en la ineficiencia de costes y el sobreconsumo energético.
-Como respuesta reactiva a esta incertidumbre sobre el crecimiento futuro de los datos y para evitar retardos en la provisión de instancias(provisioning delay), la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura de almacenamiento como estrategia de reacción para abordar esta incertidumbre sobre el crecimiento futuro de los datos \parencite{cortez2017resource, irlbeck2014green}.
+En este contexto, las infraestructuras enfrentan una problemática crítica enfocada en la ineficiencia de costes y el sobreconsumo energético, que se medide indirectamente a por el coste computacional de las instancias activas y la capacidad provisionada pero inactiva,
+el consumo energético directo de los entornos cloud no es observable por el usuario\parencite{masanet2020recalibrating}.
+
+Que los entornos de producción necesitan instancias activas con capacidad estimada anteriormente para procesar los datos en tiempo real, el problema que se genera aquí no es únicamente el volumen acumulado sino la velocidad de ingesta y la latencia de acceso necesaria por las aplicaciones, no es posible delegar toda la gestión al almacenamiento elástico, lo que obliga a mantener una capacidad sobredimensionada de forma permanente.
+
+
+En entornos On-Premises, Y como respuesta reactiva a la incertidumbre sobre el crecimiento futuro de los datos, la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura de almacenamiento como estrategia preventiva ante dicha incertidumbre \parencite{cortez2017resource, irlbeck2014green}.
 Y por eso, entre el 30\% y el 50\% de la capacidad de almacenamiento instalada constantemente permanece inactiva \parencite{cortez2017resource}.
-Esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía \parencite{masanet2020recalibrating}.
+En los entornos cloud que el problema aparece de una forma diferente, aunque no existe capacidad instalada fisicamente, sobreestiman las organizaciones instancias de cómputo de forma preventiva para evitar retardos en el aprovisionamiento
+En ambos casos esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren. \parencite{masanet2020recalibrating}.
 
 
 
