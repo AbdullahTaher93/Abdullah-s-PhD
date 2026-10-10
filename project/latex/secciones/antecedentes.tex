@@ -33,17 +33,16 @@ Que los entornos de producción necesitan instancias activas con capacidad estim
 
 En entornos On-Premises, Y como respuesta reactiva a la incertidumbre sobre el crecimiento futuro de los datos, la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura de almacenamiento como estrategia preventiva ante dicha incertidumbre \parencite{cortez2017resource, irlbeck2014green}.
 Y por eso, entre el 30\% y el 50\% de la capacidad de almacenamiento instalada constantemente permanece inactiva \parencite{cortez2017resource}.
-En los entornos cloud que el problema aparece de una forma diferente, aunque no existe capacidad instalada fisicamente, sobreestiman las organizaciones instancias de cómputo de forma preventiva para evitar retardos en el aprovisionamiento
-En ambos casos esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren. \parencite{masanet2020recalibrating}.
-
-
-
-\subsection*{Brecha investigadora}
+En los entornos cloud que el problema aparece de una forma diferente, aunque no existe capacidad instalada físicamente, sobreestiman las organizaciones instancias de cómputo de forma preventiva para evitar retardos en el aprovisionamiento
+En ambos casos, esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren. \parencite{masanet2020recalibrating}.
 
 A pesar de que los paradigmas HSM y AST se encuentran bien establecidos teóricamente, la implementación de HSM y AST con aprendizaje automático que se ejecuten sobre trazas reales de entornos de producción continúa siendo un ámbito con cobertura baja y limitada en el estado del arte \parencite{shuja2016sustainable}.
-Casi todos los trabajos en este ámbito utilizan datos artificiales o entornos de prueba controlados, y sin contar de una validación estadística robusta sobre los datos de producción.
+Aplicar ML al AST significa entrenar un modelo que, a partir de series temporales de métricas de acceso, predice la capa de almacenamiento óptima para cada dato, esta application de ML tiene 3 limitaciones,
+casi todos los trabajos en este ámbito utilizan datos artificiales o entornos de prueba controlados, y sin contar de una validación estadística robusta sobre los datos de producción, y por última no incorporan restricciones de SLA como condición operativa del modelo \parencite{zhang2020cloud, kumar2021ast}.
 
-Existen conjuntos de datos públicos.
+
+Esta investigación cuenta con trazas reales de producción para entrenar y validar los modelos.
+Que existen conjuntos de datos públicos.
 Por ejemplo, Google Cluster Traces, que registra comportamientos reales de más de 96\,000 tareas en la infraestructura de Google durante más de un mes con una resolución temporal de un segundo, lo que permitirá estudiar los patrones de carga \parencite{reiss2012heterogeneity}.
 También el caso principal de nuestro estudio de la investigación es el \textbf{Centre de Telecomunicacions i Tecnologies de la Informació (CTTI)} de la Generalitat de Catalunya.
 Además, se considera el uso de trazas de la infraestructura del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) como caso de estudio complementario para validar la generalización de los resultados.
