@@ -42,13 +42,16 @@ casi todos los trabajos en este ámbito utilizan datos artificiales o entornos d
 
 
 Esta investigación cuenta con trazas reales de producción para entrenar y validar los modelos.
-Que existen conjuntos de datos públicos.
-Por ejemplo, Google Cluster Traces, que registra comportamientos reales de más de 96\,000 tareas en la infraestructura de Google durante más de un mes con una resolución temporal de un segundo, lo que permitirá estudiar los patrones de carga \parencite{reiss2012heterogeneity}.
-También el caso principal de nuestro estudio de la investigación es el \textbf{Centre de Telecomunicacions i Tecnologies de la Informació (CTTI)} de la Generalitat de Catalunya.
-Además, se considera el uso de trazas de la infraestructura del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) como caso de estudio complementario para validar la generalización de los resultados.
-En los entornos de CTTI se detecta de manera consistente que los servidores de almacenamiento de datos institucionales alcanzan su capacidad máxima de manera recurrente.
-El análisis de este comportamiento demuestra que la saturación no se explica exclusivamente al volumen de datos generados, sino a la ausencia de un sistema capaz de organizar automáticamente los datos según de sus patrones de acceso y de gestionar de forma dinámica su distribución entre capas de almacenamiento mediante mecanismos de AST.
+Que el caso principal de nuestro estudio de la investigación es el \textbf{Centre de Telecomunicacions i Tecnologies de la Informació (CTTI)} de la Generalitat de Catalunya.
+Se considera el uso de trazas de la infraestructura del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) como caso de estudio complementario para validar la generalización de los resultados.
+En los entornos de CTTI se detecta la ausencia de un sistema capaz de organizar automáticamente los datos según de sus patrones de acceso y de gestionar de forma dinámica su distribución entre capas de almacenamiento mediante mecanismos de AST.
 La situación replica el patrón \parencite{cortez2017resource, irlbeck2014green}, y no se ocurre exclusivamente en CTTI ni de la administración pública, sino que impacta prácticamente casi en manera generalizada a los centros de datos a escala global \parencite{masanet2020recalibrating, iea2022datacentres}.
+También existen conjuntos de datos públicos.
+Por ejemplo, Google Cluster Traces, que registra comportamientos reales de más de 96\,000 tareas en la infraestructura de Google durante más de un mes con una resolución temporal de un segundo, lo que permitirá estudiar los patrones de carga \parencite{reiss2012heterogeneity}.
+
+En nuestro estudio se espera demostrar que un modelo de AST basado en ML, entrenado sobre trazas reales, es capaz de clasificar automáticamente cada fichero o bloque en la capa de almacenamiento óptima (how, warm y cold capas),  ejecutar las migraciones de forma autónoma y continua.
+Esto debería reducir la saturación en la capa activa, una disminución del coste energético asociado al mantenimiento de datos fríos en almacenamiento rápido, y el cumplimiento de los SLA exigidos por las aplicaciones.
+
 
 \medskip
 \noindent\textbf{Pregunta de investigación:}
