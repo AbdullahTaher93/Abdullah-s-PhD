@@ -1,6 +1,6 @@
 \section{Antecedentes}
-Los sistemas tradicionales de almacenamiento se basan en la Gestión Jerárquica del Almacenamiento (\textit{Hierarchical Storage Management}, \textbf{HSM}), que utiliza reglas estáticas y manuales para transferir datos entre capas \parencite{smith2018hsm}.
-Representa cada capa un nivel de almacenamiento y cada capa tiene diferente velocidad de acceso y coste.
+Los sistemas tradicionales de almacenamiento se basan en la Gestión Jerárquica del Almacenamiento (\textit{Hierarchical Storage Management}, \textbf{HSM}), que organiza los datos en capas jerárquicos.
+Represente cada capa un nivel de almacenamiento con diferente velocidad de acceso y coste, y utiliza reglas estáticas y manuales para transferir datos entre ellas \parencite{smith2018hsm}.
 Utiliza la capa caliente (\textit{hot}) recursos de alta velocidad y coste elevado, como discos SSD, en la nube, Amazon S3 Standard o instancias con almacenamiento en memoria (Amazon ElastiCache).
 Utiliza la capa templada (\textit{warm}) servicios de acceso infrecuente como Amazon S3 Standard-IA.
 Y la capa fría (\textit{cold}) recurre a servicios de archivo en la nube de bajo coste y acceso lento, como Amazon S3 Glacier.
@@ -13,7 +13,6 @@ Para la migración debe garantizar que los datos a los que las aplicaciones acce
 El tema de gestionar el almacenamiento ha sido formulado formalmente en la literatura dentro de dos paradigmas complementarios.
 La \textit{Hierarchical Storage Management} (\textbf{HSM}) y el \textit{Automated Storage Tiering} (\textbf{AST}).
 
-El Modelo(HSM) sugiere organizar los datos en capas jerárquicos de almacenamiento conocidos como caliente (\textit{hot}, p.ej. SSD o RAM), templado (\textit{warm}, p.ej. HDD) y frío (\textit{cold}, p.ej. cinta o almacenamiento de objetos),según de su frecuencia de uso \parencite{mesnier2003object}.
 El problema de este modelo es la ineficiencia ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
 
 Y el AST amplía el modelo HSM al integrar mecanismos automáticos que mueven los datos entre capas de manera dinámica, en los patrones de acceso según en la función de cambios.
