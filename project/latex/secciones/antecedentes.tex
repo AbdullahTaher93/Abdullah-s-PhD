@@ -10,11 +10,11 @@ Para tomar nuevas decisiones sobre cómo gestionar el almacenamiento debe respet
 Esto significa que no es posible mover datos a capas más lentas o económicas de forma indiscriminada.
 Para la migración debe garantizar que los datos a los que las aplicaciones acceden con frecuencia permanezcan en capas con la latencia adecuada para no romper dichos compromisos.
 
-El Tema de gestionar el almacenamiento ha sido formulado formalmente en la literatura dentro de dos paradigmas complementarios.
+El tema de gestionar el almacenamiento ha sido formulado formalmente en la literatura dentro de dos paradigmas complementarios.
 La \textit{Hierarchical Storage Management} (\textbf{HSM}) y el \textit{Automated Storage Tiering} (\textbf{AST}).
 
 El Modelo(HSM) sugiere organizar los datos en capas jerárquicos de almacenamiento conocidos como caliente (\textit{hot}, p.ej. SSD o RAM), templado (\textit{warm}, p.ej. HDD) y frío (\textit{cold}, p.ej. cinta o almacenamiento de objetos),según de su frecuencia de uso \parencite{mesnier2003object}.
-El problema de este modelo es la ineficiencia de ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
+El problema de este modelo es la ineficiencia ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
 
 Y el AST amplía el modelo HSM al integrar mecanismos automáticos que mueven los datos entre capas de manera dinámica, en los patrones de acceso según en la función de cambios.
 El \textit{tiering} es una monitorización continua a los \textit{patrones de acceso} de cada bloque o fichero para entender como la frecuencia, recencia y secuencialidad de las operaciones de lectura y escritura sobre ese dato a lo largo del tiempo, según a dicha monitorización reubica los datos en la capa más adecuada cuando dichos patrones cambian manualmente \parencite{guerra2011tiering}.
