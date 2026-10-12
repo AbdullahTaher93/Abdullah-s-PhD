@@ -5,3 +5,12 @@ Dicha ineficiencia es peor todavía en los entornos On-Premises donde entre el 3
 En ambos casos, esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren. \parencite{masanet2020recalibrating}.
 
 Así, nuestra hipótesis general es la siguiente: es posible reducir la saturación de la capa activa de almacenamiento, disminuir el coste operativo y garantizar el cumplimiento de los SLA mediante la aplicación de un modelo de ML aplicado a AST, entrenado sobre trazas reales de producción, en comparación con las políticas estáticas de HSM.
+
+La adopción de ML aplicado al AST se justifica por la incapacidad demostrada de las políticas estáticas de HSM para adaptarse a la variabilidad de los patrones de acceso modernos.
+Teóricamente, un modelo entrenado sobre series temporales de métricas de acceso puede predecir la capa de almacenamiento óptima para cada dato y ejecutar las migraciones de forma autónoma y continua, respetando los SLA exigidos por las aplicaciones.
+
+A pesar de que los paradigmas HSM y AST se encuentran bien establecidos teóricamente, la implementación de HSM y AST con aprendizaje automático que se ejecuten sobre trazas reales de entornos de producción continúa siendo un ámbito con cobertura baja y limitada en el estado del arte \parencite{shuja2016sustainable}.
+Aplicar ML al AST significa entrenar un modelo que, a partir de series temporales de métricas de acceso, predice la capa de almacenamiento óptima para cada dato, esta application de ML tiene 3 limitaciones,
+casi todos los trabajos en este ámbito utilizan datos artificiales o entornos de prueba controlados, y sin contar de una validación estadística robusta sobre los datos de producción, y por última no incorporan restricciones de SLA como condición operativa del modelo \parencite{liao2013green, koller2011dedup}.
+
+Nuestra investigación cuenta con trazas reales del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) de la Generalitat de Catalunya, así como con conjuntos de datos públicos como Google Cluster Traces, lo que permite entrenar y validar los modelos en condiciones reales.
