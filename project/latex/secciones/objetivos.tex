@@ -1,4 +1,12 @@
 \section{Objetivos}
-El objetivo general es desarrollar y validar una metodología de creación modelos de predicción avanzados
-basada en basados en Inteligencia Artificial para reducir la huella de carbono de los centros de datos en consonancia con los Objetivos de Desarrollo Sostenible. La reducción el consumo energético afecta directamente en una disminución de los elevados costos operativos por los proveedores de servicios en la nube. [The Future of AI in Big Data] Cerrar la brecha tecnológica las investigaciones actuales se enfocan en la seguridad de datos y la velocidad de procesamiento, pero se faltan soluciones de la eficiencia energética en las gestiones del Big Data. [The Role of Cloud Computing in Big Data Analytics]
-el marco teórico de esta investigación se enmarca en el ámbito de la Computación en la Nube Verde que se base en analítica de Big Data para procesar la magnitud de los datos [Big data analytics in Cloud computing: an overview]., inteligencia Artificial Predictiva para tomar las decisiones estratégicas [Applications of AI in Cloud Computing]. y sistemas de computación distribuida para la ejecución técnica.
+nuestro objetivo general es desarrollar y validar una metodología de creación un modelo de Automated Storage Tiering (AST) basado en aprendizaje automático,
+para reducir a saturación de la capa activa de almacenamiento y minimizar el coste operativo, garantizando el cumplimiento de los acuerdos de nivel de servicio (SLA) en entornos de producción reales.
+
+
+Los objetivos específicos son:
+\begin{itemize}
+    \item Diagnosticar el estado actual de las infraestructuras de almacenamiento analizadas (CTTI y Google Cluster Traces) y establecer una línea base cuantitativa de su ineficiencia porcentaje de capacidad inactiva, frecuencia de saturación de la capa activa y coste operativo asociado a la sobreestimación.
+    \item Diseñar e implementar un modelo de ML para la clasificación automática de ficheros y bloques en capas de almacenamiento (hot, warm, cold), incorporando restricciones de SLA como condición operativa.
+    \item Evaluar el impacto del modelo comparando las métricas (saturación de la capa activa, latencia de acceso, cumplimiento de SLA y coste operativo evitado por unidad de tiempo) frente a las políticas estáticas de HSM.
+\end{itemize}
+
