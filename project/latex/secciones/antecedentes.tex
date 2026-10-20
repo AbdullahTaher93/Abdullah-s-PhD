@@ -6,16 +6,17 @@ Representa cada capa un nivel de almacenamiento con diferente velocidad de acces
     \item Capa templada (\textit{warm}): servicios de acceso infrecuente como Amazon S3 Standard-IA.
     \item Capa fría (\textit{cold}): servicios de archivo en la nube de bajo coste y acceso lento, como Amazon S3 Glacier.
 \end{itemize}
-Las políticas que determinan la transferencia de datos entre este tipo de capas que son configuradas manualmente por los administradores del sistema que resultan incapaces a los cambios en los patrones de acceso reales \parencite{smith2018hsm}.
+Las políticas que determinan la transferencia de datos entre este tipo de capas son configuradas manualmente por los administradores del sistema,
+por lo que resultan incapaces a los cambios en los patrones de acceso reales \parencite{smith2018hsm}.
 
-Para tomar nuevas decisiones sobre cómo gestionar el almacenamiento debe respetar los Acuerdos de Nivel de Servicio (\textit{Service Level Agreements}, \textbf{SLA}) que son compromisos cuantitativos de latencia, tiempo de respuesta y disponibilidad que las aplicaciones exigen a la infraestructura \parencite{verma2015sla}.
+Para tomar nuevas decisiones sobre cómo gestionar el almacenamiento, se deben respetar los Acuerdos de Nivel de Servicio (\textit{Service Level Agreements}, \textbf{SLA}) que son compromisos cuantitativos de latencia, tiempo de respuesta y disponibilidad que las aplicaciones exigen a la infraestructura \parencite{verma2015sla}.
 Esto significa que no es posible mover datos a capas más lentas o económicas de forma indiscriminada.
-Para la migración debe garantizar que los datos a los que las aplicaciones acceden con frecuencia permanezcan en capas con la latencia adecuada para no romper dichos compromisos.
+Para llevar a cabo la migración, se debe garantizar que los datos a los que las aplicaciones acceden con frecuencia permanezcan en capas con la latencia adecuada para no romper dichos compromisos.
 
 El tema de gestionar el almacenamiento ha sido formulado formalmente en la literatura dentro de dos paradigmas complementarios.
 La \textit{Hierarchical Storage Management} (\textbf{HSM}) y el \textit{Automated Storage Tiering} (\textbf{AST}).
 
-El problema de este modelo es la ineficiencia ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
+El problema del modelo HSM es la ineficiencia ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
 
 Y el AST amplía el modelo HSM al integrar mecanismos automáticos que mueven los datos entre capas de manera dinámica, en los patrones de acceso según en la función de cambios.
 El \textit{tiering} es una monitorización continua a los \textit{patrones de acceso} de cada bloque o fichero para entender como la frecuencia, recencia y secuencialidad de las operaciones de lectura y escritura sobre ese dato a lo largo del tiempo, según a dicha monitorización reubica los datos en la capa más adecuada cuando dichos patrones cambian manualmente \parencite{guerra2011tiering}.
