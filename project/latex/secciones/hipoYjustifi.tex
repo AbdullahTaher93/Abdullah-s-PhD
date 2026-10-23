@@ -1,4 +1,26 @@
 \section{Hipótesis y justificación}
-El problema principal es en el conflicto del incremento rápido del Big Data y entre el limitado de los recursos energéticos y su sostenibilidad en entornos de nube, aunque el cloud computing ha presentado soluciones de escalabilidad y seguridad [Artificial Intelligence Data Security Evaluation], pero las gestiones estos datos necesitan un consumo masivo de energía debido al funcionamiento continuo de los servidores y  los sistemas de la refrigeración, El problema de investigación es la ineficiencia de asignar dinámicamente los recursos en la nube que los recursos siguen trabajando al máximo de sus potencias incluso en periodos de baja demanda lo que resulta en desperdicio energético y un impacto ambiental. 
+El reto principal de nuestra tesis es la gestión ineficiente del almacenamiento en infraestructuras donde los entornos de producción enfrentan un crecimiento acelerado del volumen de datos.
+Los sistemas tradicionales de almacenamiento se basan en la Gestión Jerárquica del Almacenamiento (\textit{Hierarchical Storage Management}, \textbf{HSM}) que utilizan reglas estáticas y manuales para transferir datos entre capas \parencite{guerra2011tiering}, sin embargo, no se adaptan dichas reglas a los cambios en los patrones de acceso reales ocasionando que datos fríos ocupen espacios en capas rápidas y costosas, y que datos calientes queden en capas lentas.
+Dicha ineficiencia es peor todavía en los entornos On-Premises donde entre el 30\% y el 50\% de la capacidad de almacenamiento instalada permanece inactiva de forma recurrente, y en entornos cloud, donde las organizaciones sobreestiman instancias de cómputo de forma preventiva para evitar retardos en el aprovisionamiento, incurriendo en costes financieros por recursos infrautilizados.
+En ambos casos, esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren \parencite{cortez2017resource}.
 
-Este estudio se basa en hipótesis de la integración de modelos de predicción avanzados basados en Inteligencia Artificial (como el Deep learning) para analizar los patrones de flujo de dato para que los sistemas de computación puedan reasignar sus recursos dinámicamente y de forma proactiva y esto resulta en una reducción muy clara del consumo energético sin afectar al rendimiento de los servicios ni la seguridad de los datos.
+Así, nuestra hipótesis general es la siguiente: es posible reducir la saturación de la capa activa de almacenamiento, disminuir el coste operativo y garantizar el cumplimiento de los SLA mediante la aplicación de un modelo de ML sobre AST, entrenado sobre trazas reales de producción, en comparación con las políticas estáticas de HSM.
+
+La adopción de ML aplicado al AST se justifica por la incapacidad demostrada de las políticas estáticas de HSM para adaptarse a la variabilidad de los patrones de acceso modernos.
+Teóricamente, un modelo entrenado sobre series temporales de métricas de acceso puede predecir la capa de almacenamiento óptima para cada dato y ejecutar las migraciones de forma autónoma y continua, respetando los SLA exigidos por las aplicaciones.
+
+A pesar de que los paradigmas HSM y AST se encuentran bien establecidos teóricamente, la implementación de HSM y AST con aprendizaje automático que se ejecuten sobre trazas reales de entornos de producción continúa siendo un ámbito con cobertura reducida en el estado del arte \parencite{zhang2022efficient, zhang2023data, zhang2024autonomous}.
+Aplicar ML al AST significa entrenar un modelo que, a partir de series temporales de métricas de acceso, predice la capa de almacenamiento óptima para cada dato, esta aplicación de ML tiene 3 limitaciones,
+casi todos los trabajos en este ámbito utilizan datos artificiales o entornos de prueba controlados, y sin contar de una validación estadística robusta sobre los datos de producción, y por última no incorporan restricciones de SLA como condición operativa del modelo \parencite{kumar2021ast, zhang2023data, zhang2024autonomous}.
+
+Esta investigación cuenta con trazas reales del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) de la Generalitat de Catalunya, así como con conjuntos de datos públicos como Google Cluster Traces, lo que permite entrenar y validar los modelos en condiciones reales.
+
+
+\medskip
+\noindent\textbf{Hipótesis de trabajo:}
+
+\begin{itemize}
+    \item (\textit{H1}): Un modelo de AST basado en ML optimiza la clasificación, automática de cada fichero o bloque en la capa de almacenamiento óptima (hot, warm, cold) con un grado superior de exactitud que las políticas estáticas de HSM, reduciendo la saturación de la capa activa medida mediante la tasa de utilización de IOPS(Input/Output Operations Per Second) y la latencia de acceso.
+    \item (\textit{H2}): Un modelo de AST que integra restricciones de nivel de servicio (SLA) como condición operativa del modelo garantiza que las migraciones entre capas no degraden la latencia de acceso requerida por las aplicaciones, a diferencia de los enfoques actuales que no cumplen dichas restricciones de SLA.
+    \item (\textit{H3}): La implementación y validación del modelo de AST sobre infraestructuras reales (On-Premises y cloud) permite cuantificar empíricamente del impacto económico y energético, expresado en términos de ahorros en los gastos operacionales (OPEX) evitado por unidad de tiempo, respecto a la sobreestimación actual.
+\end{itemize}
