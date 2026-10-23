@@ -1,13 +1,13 @@
 \section{Antecedentes}
 Los sistemas tradicionales de almacenamiento se basan en la Gestión Jerárquica del Almacenamiento (\textit{Hierarchical Storage Management}, \textbf{HSM}), que organiza los datos en capas jerárquicas.
-Representa cada capa un nivel de almacenamiento con diferente velocidad de acceso y coste, y utiliza reglas estáticas y manuales para transferir datos entre ellas \parencite{smith2018hsm}.
+Representa cada capa un nivel de almacenamiento con diferente velocidad de acceso y coste, y utiliza reglas estáticas y manuales para transferir datos entre ellas \parencite{guerra2011tiering}.
 \begin{itemize}
     \item Capa caliente (\textit{hot}): recursos de alta velocidad y coste elevado, como discos SSD, en la nube, Amazon S3 Standard o instancias con almacenamiento en memoria (Amazon ElastiCache).
     \item Capa templada (\textit{warm}): servicios de acceso infrecuente como Amazon S3 Standard-IA.
     \item Capa fría (\textit{cold}): servicios de archivo en la nube de bajo coste y acceso lento, como Amazon S3 Glacier.
 \end{itemize}
 Las políticas que determinan la transferencia de datos entre este tipo de capas son configuradas manualmente por los administradores del sistema,
-por lo que resultan incapaces a los cambios en los patrones de acceso reales \parencite{smith2018hsm}.
+por lo que resultan incapaces a los cambios en los patrones de acceso reales \parencite{guerra2011tiering}.
 
 Para tomar nuevas decisiones sobre cómo gestionar el almacenamiento, se deben respetar los Acuerdos de Nivel de Servicio (\textit{Service Level Agreements}, \textbf{SLA}) que son compromisos cuantitativos de latencia, tiempo de respuesta y disponibilidad que las aplicaciones exigen a la infraestructura \parencite{verma2015sla}.
 Esto significa que no es posible mover datos a capas más lentas o económicas de forma indiscriminada.
@@ -19,28 +19,28 @@ La \textit{Hierarchical Storage Management} (\textbf{HSM}) y el \textit{Automate
 El problema del modelo HSM es la ineficiencia ante la variabilidad de los patrones de acceso modernos, ya que las reglas de migración son estáticas y no se adaptan a los cambios en el comportamiento de acceso a los datos impactando que datos fríos ocupen espacio en capas rápidas y costosas, y que datos calientes queden en capas lentas.
 
 Y el AST amplía el modelo HSM al integrar mecanismos automáticos que mueven los datos entre capas de manera dinámica, en los patrones de acceso según en la función de cambios.
-El \textit{tiering} es una monitorización continua a los \textit{patrones de acceso} de cada bloque o fichero para entender como la frecuencia, recencia y secuencialidad de las operaciones de lectura y escritura sobre ese dato a lo largo del tiempo, según a dicha monitorización reubica los datos en la capa más adecuada cuando dichos patrones cambian manualmente \parencite{guerra2011tiering}.
+El \textit{tiering} es una monitorización continua a los \textit{patrones de acceso} de cada bloque o fichero para entender como la frecuencia, recencia y secuencialidad de las operaciones de lectura y escritura sobre ese dato a lo largo del tiempo, según a dicha monitorización reubica los datos en la capa más adecuada cuando dichos patrones cambian manualmente.
 En este proceso, la monitorización se basa en la tasa de utilización de IOPS (\textit{Input/Output Operations Per Second}) para evaluar la demanda instantánea sobre la infraestructura.
 Cuando esta tasa se aproxima a la capacidad nominal del sistema, se produce la saturación de la capa activa, un estado de sobrecarga que genera congestión en el sistema e incrementa la latencia de acceso, afectando de forma directa a la calidad del servicio y comprometiendo el cumplimiento de los SLA.
 
 El enorme aumento del volumen de datos digitales producidos por organizaciones públicas y privadas ha sido uno de los desafíos tecnológicos más relevantes de la última década, porque supera los límites de la capacidad computacional y de almacenamiento de los sistemas tradicionales,
-imponiendo  un consumo energético continuo e insostenible en los centros de datos para poder procesar dichos datos sin afectar negativamente la seguridad ni el tiempo de respuesta \parencite{gantz2012digital}.
+imponiendo un consumo energético continuo e insostenible en los centros de datos para poder procesar dichos datos sin afectar negativamente la seguridad ni el tiempo de respuesta.
 
 Este problema se ha trasladado y complicado desde los sistemas tradicionales locales (On-Premises) hacia entornos de computación en la nube e híbridos (Cloud e Hybrid Cloud, tales como instancias de cómputo y contenedores en Amazon Web Services - AWS EC2/ECS).
 En estas infraestructuras, el desafío central no está únicamente en el almacenamiento estático, sino en el coste financiero y energético derivado de mantener capacidad de cómputo activa para procesar datos en tiempo real.
 
 En este contexto, las infraestructuras enfrentan una problemática crítica enfocada en la ineficiencia de costes y el sobreconsumo energético, que se mide indirectamente por el coste computacional de las instancias activas y la capacidad provisionada pero inactiva,
-el consumo energético directo de los entornos cloud no es observable por el usuario\parencite{masanet2020recalibrating}.
+el consumo energético directo de los entornos cloud no es observable por el usuario.
 
 Que los entornos de producción necesitan instancias activas con capacidad estimada anteriormente para procesar los datos en tiempo real, el problema que se genera aquí no es únicamente el volumen acumulado sino la velocidad de ingesta y la latencia de acceso necesaria por las aplicaciones, no es posible delegar toda la gestión al almacenamiento elástico, lo que obliga a mantener una capacidad sobredimensionada de forma permanente.
 
 
-En entornos On-Premises, como respuesta reactiva a la incertidumbre sobre el crecimiento futuro de los datos, la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura física de almacenamiento como estrategia preventiva ante dicha incertidumbre \parencite{cortez2017resource, irlbeck2014green}.
+En entornos On-Premises, como respuesta reactiva a la incertidumbre sobre el crecimiento futuro de los datos, la literatura científica documenta repetidamente que las organizaciones sobreestiman el tamaño de su infraestructura física de almacenamiento como estrategia preventiva ante dicha incertidumbre \parencite{cortez2017resource}.
 Por eso, entre el 30\% y el 50\% de la capacidad de almacenamiento instalada constantemente permanece inactiva \parencite{cortez2017resource}, lo que genera una ineficiencia en la inversión inicial en equipamiento, si bien los centros de datos modernos desconectan la infraestructura inactiva para mitigar el consumo energético directo.
 En los entornos cloud, el problema aparece de una forma diferente, aunque no existe capacidad instalada físicamente, sobreestiman las organizaciones instancias de cómputo de forma preventiva para evitar retardos en el aprovisionamiento
-En ambos casos, esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren. \parencite{masanet2020recalibrating}.
+En ambos casos, esto conlleva costes financieros innecesarios, ineficiencias operativas y un impacto significativo en el consumo de energía, aunque sus mecanismos difieren \parencite{cortez2017resource}.
 
-A pesar de que los paradigmas HSM y AST se encuentran bien establecidos teóricamente, la integración de modelos de aprendizaje automático sobre AST en entornos de producción continúa siendo un ámbito con cobertura reducida en la literatura reciente \parencite{shuja2016sustainable, zhang2022efficient, zhang2023data, zhang2024autonomous}.
+A pesar de que los paradigmas HSM y AST se encuentran bien establecidos teóricamente, la integración de modelos de aprendizaje automático sobre AST en entornos de producción continúa siendo un ámbito con cobertura reducida en la literatura reciente \parencite{zhang2022efficient, zhang2023data, zhang2024autonomous}.
 En este contexto, aplicar aprendizaje automático al AST implica procesar como \textbf{datos de entrada (\textit{inputs})} series temporales de métricas de acceso por bloque o fichero (tales como la frecuencia, la recencia, la secuencialidad de lectura/escritura y el tamaño del dato).
 A partir de estas variables, el modelo \textbf{aprende a predecir} la probabilidad de reutilización y la temperatura del dato, generando como \textbf{salida (\textit{output})} la asignación hacia la capa de almacenamiento óptima (\textit{hot}, \textit{warm} o \textit{cold}) o la orden directa de migración entre niveles.
 Las propuestas existentes en el estado del arte presentan limitaciones específicas que fundamentan la necesidad de esta investigación:
@@ -54,7 +54,7 @@ Esta investigación cuenta con trazas reales de producción para entrenar y vali
 Que el caso principal de nuestro estudio de la investigación es el \textbf{Centre de Telecomunicacions i Tecnologies de la Informació (CTTI)} de la Generalitat de Catalunya.
 Se considera el uso de trazas de la infraestructura del Centre de Telecomunicacions i Tecnologies de la Informació (CTTI) como caso de estudio complementario para validar la generalización de los resultados.
 En los entornos de CTTI se detecta la ausencia de un sistema capaz de organizar automáticamente los datos según sus patrones de acceso y de gestionar de forma dinámica su distribución entre capas de almacenamiento mediante mecanismos de AST.
-La situación replica el patrón \parencite{cortez2017resource, irlbeck2014green}, y no ocurre exclusivamente en CTTI ni en la administración pública, sino que impacta prácticamente casi de manera generalizada a los centros de datos a escala global \parencite{masanet2020recalibrating, iea2022datacentres}.
+La situación no ocurre exclusivamente en CTTI ni en la administración pública, sino que impacta de manera generalizada a los centros de datos a escala global \parencite{cortez2017resource}.
 También existen conjuntos de datos públicos.
 Por ejemplo, Google Cluster Traces, que registra comportamientos reales de más de 96\,000 tareas en la infraestructura de Google durante más de un mes con una resolución temporal de un segundo, lo que permite estudiar los patrones de carga \parencite{reiss2012heterogeneity}.
 
