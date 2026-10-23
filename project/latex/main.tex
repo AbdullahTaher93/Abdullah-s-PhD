@@ -4,17 +4,20 @@
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{tabularx} % Añadido para que funcione la tabla estructurada
+\usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{csquotes}
 \usepackage{enumitem}
 
-% AJUSTE CRÍTICO: Se aumenta el margen superior (top) y el espacio del header
+% Ajuste de márgenes
 \usepackage[margin=2.5cm, top=6cm, headheight=150pt, headsep=1cm]{geometry}
 
 \usepackage{fancyhdr}
 \usepackage[style=numeric, sorting=none, backend=biber]{biblatex}
+
+% RUTA DE TU BIBLIOGRAFÍA
 \addbibresource{referencias/ref.bib}
+
 \graphicspath{ {./logos/} }
 
 % ==========================================
@@ -24,11 +27,11 @@
 \definecolor{grisCabecera}{RGB}{230, 230, 230}
 \definecolor{azulCelda}{RGB}{190, 215, 240}
 
-% hyperref debe cargarse después de los colores
+% hyperref
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=azulTitulo, citecolor=azulTitulo, urlcolor=azulTitulo}
 
-% Configuración del Header corregida
+% Configuración del Header
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{%
@@ -54,7 +57,7 @@
 \vspace{1cm}
 
 % ==========================================
-% NUEVA SECCIÓN: DATOS DEL PLAN DE INVESTIGACIÓN (IMAGEN)
+% DATOS DEL PLAN DE INVESTIGACIÓN
 % ==========================================
 \noindent
 \begin{tabularx}{\textwidth}{|X|}
@@ -69,7 +72,7 @@
     \color{azulTitulo}\textbf{Título del Plan de Investigación}
 \end{center}
 \noindent
-IA para la Gestión Sostenible de Big Data en la Nube: Predicción de Patrones i Eficiencia Energética
+Gestión Automática de Almacenamiento por Niveles mediante Aprendizaje Automático: Reducción de Saturación, Coste Operativo y Cumplimiento de SLA en Entornos de Producción Reales
 
 \vspace{0.4cm}
 
@@ -78,21 +81,21 @@ IA para la Gestión Sostenible de Big Data en la Nube: Predicción de Patrones i
     \hline
     \rowcolor{azulCelda} Línea de investigación del programa en la que se inscribe & Soft Computing \\
     \hline
-    \rowcolor{azulCelda} Palabras clave (4) & Inteligencia Artificial, Computación en la Nube Sostenible, Gestión de Big Data, Eficiencia Energética \\
+    \rowcolor{azulCelda} Palabras clave (4) & Automated Storage Tiering (AST), Hierarchical Storage Management (HSM), Aprendizaje Automático, Cumplimiento de SLA \\
     \hline
 \end{tabularx}
 
-\vspace{1.5cm} % Espacio de separación antes de los antecedentes
+\vspace{1.5cm}
 
 % ==========================================
-% Importación de tus archivos
+% Importación de tus archivos (Usando \input en lugar de \include)
 % ==========================================
-\include{secciones/antecedentes}
-%\include{secciones/hipoYjustifi}
-%\include{secciones/objetivos}
-%\include{secciones/meto}
-%\include{secciones/planTemp}
-%\include{secciones/mediosYfinan}
-\include{secciones/refer}
+\input{secciones/antecedentes}
+\input{secciones/hipoYjustifi}
+\input{secciones/objetivos}
+\input{secciones/meto}
+\input{secciones/planTemp}
+\input{secciones/mediosYfinan}
+\input{secciones/refer}
 
 \end{document}
